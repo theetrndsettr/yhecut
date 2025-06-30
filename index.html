@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yhecut Media | Premium Branding Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0e17;
+            --secondary: #1a2138;
+            --accent: #ff003c;
+            --accent2: #d1002f;
+            --light-bg: #ffffff;
+            --dark-bg: #0a0e17;
+            --dark-text: #000000;
+            --light-text: #f8f9fa;
+            --text: #e6f1ff;
+            --text-secondary: #a8b2d1;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light-bg);
+            color: var(--dark-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        body.dark-theme {
+            background: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation - UPDATED */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .dark-theme header {
+            background: rgba(15, 20, 35, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-right: 10px;
+            white-space: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-links li {
+            flex-shrink: 0;
+            margin: 0 5px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            padding: 10px 15px;
+            transition: var(--transition);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px) scale(1);
+            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.3);
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text);
+            font-size: 18px;
+        }
+
+        .theme-toggle.rotate {
+            animation: rotateTheme 0.6s ease;
+        }
+
+        @keyframes rotateTheme {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent);
+        }
+
+        .hamburger {
+            display: none; /* Hidden by default */
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 30px;
+            background: var(--accent);
+            border-radius: 3px;
+            left: 5px;
+            transition: var(--transition);
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 10px;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 18px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 26px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            top: 18px;
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            top: 18px;
+            transform: rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+            background: var(--light-bg);
+        }
+
+        .dark-theme .hero {
+            background: linear-gradient(rgba(10, 14, 23, 0.8), rgba(10, 14, 23, 0.9)), 
+                        url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            color: var(--dark-text);
+        }
+
+        .dark-theme .hero h1 {
+            color: white;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .dark-theme .hero p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, var(--accent2), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent), var(--accent2));
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.3);
+        }
+
+        .view-detail-btn {
+            animation: bounce 2s infinite;
+        }
+
+        .service-detail-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-detail-btn:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.6s ease;
+        }
+
+        .service-detail-btn:hover:after {
+            left: 100%;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* Services Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .dark-theme .section {
+            background: var(--dark-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--dark-text);
+        }
+
+        .dark-theme .section-header h2 {
+            color: white;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .dark-theme .section-header p {
+            color: var(--text-secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .dark-theme .service-card {
+            background: var(--secondary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 0, 60, 0.15);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .service-content p {
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .dark-theme .service-content p {
+            color: var(--text-secondary);
+        }
+
+        /* Products Section */
+        .products-section {
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+            padding: 100px 0;
+        }
+
+        .dark-theme .products-section {
+            background: linear-gradient(to bottom, #121a2b, #0d1324);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-theme .product-card {
+            background: var(--secondary);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 0, 60, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+
+        .dark-theme .product-content h3 {
+            color: white;
+        }
+
+        /* Carousel Sections */
+        .carousel-section {
+            background: white;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .dark-theme .carousel-section {
+            background: var(--dark-bg);
+        }
+
+        .service-carousel {
+            margin-bottom: 80px;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .carousel-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(transparent, rgba(10, 14, 23, 0.9));
+        }
+
+        .carousel-content h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .carousel-content p {
+            max-width: 600px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(209, 0, 47, 0.3);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent);
+        }
+
+        .carousel-btn.prev {
+            left: 20px;
+        }
+
+        .carousel-btn.next {
+            right: 20px;
+        }
+
+        /* Google Map Section */
+        .map-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .dark-theme .map-section {
+            background: var(--dark-bg);
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            position: relative;
+        }
+
+        .map-pointer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            color: var(--accent);
+            font-size: 36px;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -100%) scale(1); }
+            50% { transform: translate(-50%, -100%) scale(1.1); }
+            100% { transform: translate(-50%, -100%) scale(1); }
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--primary);
+            color: var(--text);
+            padding: 100px 0;
+        }
+
+        .dark-theme .about-section {
+            background: #121a2b;
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--secondary);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.2);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Social Media - UPDATED */
+        .social-section {
+            text-align: center;
+            background: var(--light-bg);
+            padding: 80px 0;
+        }
+
+        .dark-theme .social-section {
+            background: var(--dark-bg);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: var(--accent);
+            font-size: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-theme .social-icon {
+            background: var(--secondary);
+        }
+
+        .social-icon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(45deg, var(--accent2), var(--accent));
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .social-icon:hover:before {
+            height: 100%;
+        }
+
+        .social-icon:hover {
+            color: white;
+            transform: translateY(-10px) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.2);
+        }
+
+        /* Social Media Tooltip */
+        .social-tooltip {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .social-icon:hover .social-tooltip {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            padding: 70px 0 30px;
+            position: relative;
+        }
+
+        .dark-theme footer {
+            background: #121a2b;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-column p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            animation: pulse-whatsapp 2s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Service Detail Page */
+        .service-detail {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .dark-theme .service-detail {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .service-detail-header {
+            padding: 40px;
+            background: white;
+            color: var(--dark-text);
+            text-align: center;
+        }
+
+        .dark-theme .service-detail-header {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .service-detail-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        .dark-theme .service-detail-header h2 {
+            color: white;
+        }
+
+        .service-detail-content {
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .service-detail-content {
+                flex-direction: column;
+            }
+        }
+
+        .service-detail-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-detail-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .service-detail-image img {
+                height: 300px;
+                object-fit: contain;
+            }
+        }
+
+        .service-detail-text {
+            flex: 1;
+            color: var(--dark-text);
+        }
+
+        .dark-theme .service-detail-text {
+            color: white;
+        }
+
+        .service-detail-text h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .service-detail-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 576px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-item {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .dark-theme .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.1);
+        }
+
+        .feature-item i {
+            color: var(--accent);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .feature-item i.fa-cog {
+            animation: rotate 4s linear infinite;
+        }
+
+        .feature-item i.fa-sync-alt {
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: var(--light-bg);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+        }
+
+        .dark-theme .back-btn {
+            background: var(--secondary);
+            color: var(--accent);
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 60, 0.3);
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(10, 14, 23, 0.95);
+                width: 80%;
+                height: 100vh;
+                padding: 100px 0 0;
+                transition: var(--transition);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+                text-align: center;
+                opacity: 0;
+                transform: translateX(20px);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+            
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .nav-links li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links li:nth-child(2) { transition-delay: 0.2s; }
+            .nav-links li:nth-child(3) { transition-delay: 0.3s; }
+            .nav-links li:nth-child(4) { transition-delay: 0.4s; }
+            .nav-links li:nth-child(5) { transition-delay: 0.5s; }
+            .nav-links li:nth-child(6) { transition-delay: 0.6s; }
+            
+            .nav-links a {
+                display: block;
+                margin: 0 auto;
+                width: 80%;
+            }
+            
+            /* Show hamburger only on mobile */
+            .hamburger {
+                display: block;
+            }
+            
+            .carousel-content {
+                padding: 20px;
+            }
+            
+            .carousel-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-top: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                text-align: center;
+            }
+            
+            .hero-content {
+                padding: 0 20px;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .social-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/254728250657" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-cube"></i>YHECUT MEDIA</a>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#machinery">Machinery</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#map">Location</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Service Detail Page (Hidden by default) -->
+    <div id="service-detail" style="display: none;">
+        <div class="service-detail">
+            <div class="service-detail-header">
+                <h2 id="detail-title">Industrial Branding Systems</h2>
+            </div>
+            <div class="service-detail-content">
+                <div class="service-detail-image">
+                    <img id="detail-image" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Service Detail">
+                </div>
+                <div class="service-detail-text">
+                    <h3 id="detail-subtitle">Premium Branding Solutions</h3>
+                    <p id="detail-description">Our industrial branding systems are designed for large-scale operations requiring precision and efficiency. With cutting-edge technology and robust construction, these machines deliver consistent results even in demanding production environments.</p>
+                    <p>Key features include automated workflows, real-time quality control, and industry-leading throughput capabilities. These systems are ideal for manufacturers looking to enhance their product branding with minimal downtime and maximum output.</p>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <h4>High-Speed Operation</h4>
+                            <p>Process up to 1,200 units per hour with precision branding</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cog"></i>
+                            <h4>Automated Workflow</h4>
+                            <p>Seamless integration with existing production lines</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h4>Quality Control</h4>
+                            <p>Integrated vision systems ensure branding perfection</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <h4>Quick Changeover</h4>
+                            <p>Switch between branding designs in under 5 minutes</p>
+                        </div>
+                    </div>
+                    <a href="#" class="back-btn" id="back-button"><i class="fas fa-arrow-left"></i> Back to Solutions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (Visible by default) -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content animate">
+                    <h1>Transform Your <span>Brand</span> Into The Future</h1>
+                    <p>We create immersive brand experiences through cutting-edge machinery, premium accessories, and dedicated servicing solutions. Revolutionize your brand identity with our futuristic approach.</p>
+                    <a href="#services" class="btn">Explore Our Services</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <div class="container">
+                <div class="section-header animate">
+                    <h2>Our Premium Services</h2>
+                    <p>Comprehensive branding solutions for all your needs</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card" data-service="signage">
+                        <img src="3D-Building-Signs.png" alt="3D Signages">
+                        <div class="service-content">
+                            <h3>3D Signages</h3>
+                            <p>Eye-catching dimensional signs for maximum brand impact.</p>
+                            <a href="#" class="btn service-detail-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-service="printing">
+                        <img src="uv_dtf_digital.webp" alt="DTF & UV Printing">
+                        <div class="service-content">
+                            <h3>DTF & UV Printing</h3>
+                            <p>Advanced printing solutions for diverse materials and applications.</p>
+                            <a href="#" class="btn service-detail-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-service="customization">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Clothes Customization">
+                        <div class="service-content">
+                            <h3>Clothes Customization</h3>
+                            <p>Personalized apparel solutions for brands and individuals.</p>
+                            <a href="#" class="btn service-detail-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-service="signage2d">
+                        <img src="clear-skies-wall-2d-signsie-view-.png" alt="2D Signages">
+                        <div class="service-content">
+                            <h3>2D Signages</h3>
+                            <p>Professional signage solutions for all business needs.</p>
+                            <a href="#" class="btn service-detail-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-service="banners">
+                        <img src="e068pk8ltopvig8uptev.jpg" alt="Banners & Stickers">
+                        <div class="service-content">
+                            <h3>Banners & Stickers</h3>
+                            <p>High-quality promotional materials for your brand.</p>
+                            <a href="#" class="btn service-detail-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-service="plotting">
+                        <img src="jjgra.webp" alt="Plotting Services">
+                        <div class="service-content">
+                            <h3>Plotting Services</h3>
+                            <p>Precision cutting and plotting for various materials.</p>
+                            <a href="#" class="btn service-detail-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-service="support">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Machine Support">
+                        <div class="service-content">
+                            <h3>Machine Support</h3>
+                            <p>Expert maintenance and technical assistance for all equipment.</p>
+                            <a href="#" class="btn service-detail-btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Machinery Carousel Section -->
+        <section class="carousel-section" id="machinery">
+            <div class="container">
+                <div class="section-header animate">
+                    <h2>Advanced Machinery Solutions</h2>
+                    <p>State-of-the-art equipment for all your branding needs</p>
+                </div>
+                
+                <div class="service-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel" id="machinery-carousel">
+                            <div class="carousel-item">
+                                <img src="5bc34f406719ed429cd9de7ce8590acd.jpg" alt="CNC Router">
+                                <div class="carousel-content">
+                                    <h3>CNC Router</h3>
+                                    <p>Precision cutting and carving for wood, plastic, and metal materials.</p>
+                                    <a href="#" class="btn view-detail-btn" data-title="CNC Router" data-image="5bc34f406719ed429cd9de7ce8590acd.jpg">View Details</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="uv printer.jpg" alt="UV Printer">
+                                <div class="carousel-content">
+                                    <h3>UV Printer</h3>
+                                    <p>High-quality printing on various surfaces with UV-cured inks.</p>
+                                    <a href="#" class="btn view-detail-btn" data-title="UV Printer" data-image="uv printer.jpg">View Details</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="large format.jpg" alt="Large Format Printer">
+                                <div class="carousel-content">
+                                    <h3>Large Format Printer</h3>
+                                    <p>Professional printing for banners, signs, and large displays.</p>
+                                    <a href="#" class="btn view-detail-btn" data-title="Large Format Printer" data-image="large format.jpg">View Details</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="heat press.jpg" alt="Heat Press">
+                                <div class="carousel-content">
+                                    <h3>A2 & A3 Heat Press</h3>
+                                    <p>Professional heat transfer for apparel and promotional items.</p>
+                                    <a href="#" class="btn view-detail-btn" data-title="A2 & A3 Heat Press" data-image="c:\Users\PC\Downloads\5-in-1-combo-heat-press-machine-500x500.webp">View Details</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="flag printer.webp" alt="Flag Printing">
+                                <div class="carousel-content">
+                                    <h3>Flag Printing Machine</h3>
+                                    <p>Specialized equipment for high-quality flag production.</p>
+                                    <a href="#" class="btn view-detail-btn" data-title="Flag Printing Machine" data-image="flag printer.webp">View Details</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="mug printer.jpg" alt="Mug Printing">
+                                <div class="carousel-content">
+                                    <h3>Mug Printing Machine</h3>
+                                    <p>Custom printing on mugs and cylindrical objects.</p>
+                                    <a href="#" class="btn view-detail-btn" data-title="Mug Printing Machine" data-image="mug printer.jpg">View Details</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="cutter.jpg" alt="Cutter Plotter">
+                                <div class="carousel-content">
+                                    <h3>Cutter Plotter</h3>
+                                    <p>Precision cutting for vinyl, paper, and other materials.</p>
+                                    <a href="#" class="btn view-detail-btn" data-title="Cutter Plotter" data-image="cutter.jpg">View Details</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dtf machine.jpg" alt="DTF Machine">
+                                <div class="carousel-content">
+                                    <h3>DTF Machine</h3>
+                                    <p>Direct-to-film printing for high-quality garment transfers.</p>
+                                    <a href="#" class="btn view-detail-btn" data-title="DTF Machine" data-image="dtf machine.jpg">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="carousel-nav">
+                        <div class="carousel-dot active" data-carousel="machinery-carousel"></div>
+                        <div class="carousel-dot" data-carousel="machinery-carousel"></div>
+                        <div class="carousel-dot" data-carousel="machinery-carousel"></div>
+                        <div class="carousel-dot" data-carousel="machinery-carousel"></div>
+                        <div class="carousel-dot" data-carousel="machinery-carousel"></div>
+                        <div class="carousel-dot" data-carousel="machinery-carousel"></div>
+                        <div class="carousel-dot" data-carousel="machinery-carousel"></div>
+                        <div class="carousel-dot" data-carousel="machinery-carousel"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section" id="products">
+            <div class="container">
+                <div class="section-header animate">
+                    <h2>Premium Branding Products</h2>
+                    <p>High-quality materials and supplies for all your branding needs</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="sticker roll.jpeg" alt="Sticker Roll">
+                        <div class="product-content">
+                            <h3>Sticker Roll</h3>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="honey.avif" alt="Honey Comb Vinyl">
+                        <div class="product-content">
+                            <h3>Honey Comb Vinyl</h3>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="matte.jpg" alt="Matte Sticker">
+                        <div class="product-content">
+                            <h3>Matte Sticker</h3>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="eco solvent.webp" alt="Eco Solvent Inks">
+                        <div class="product-content">
+                            <h3>Eco Solvent Inks</h3>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="clear.jpg" alt="Clear Sticker Roll">
+                        <div class="product-content">
+                            <h3>Clear Sticker Roll</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section" id="map">
+            <div class="container">
+                <div class="section-header animate">
+                    <h2>Our Location</h2>
+                    <p>Visit us at Shawmut Plaza in Nakuru, Kenya</p>
+                </div>
+                <div class="map-container">
+                    <div class="map-pointer">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.738516905932!2d36.07357727488924!3d-0.2858713354157779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18298d9a5b1c0001%3A0x3a8e6f8b5f4c0d0!2sShawmut%20Plaza%2C%20Nakuru!5e0!3m2!1sen!2ske!4v1690822024073!5m2!1sen!2ske" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="about">
+                    <div class="about-content">
+                        <h2 class="animate">About Yhecut Media</h2>
+                        <p class="animate delay-1">Founded in 2010, Yhecut Media has revolutionized the branding industry with our innovative approach to machinery, accessories, and servicing solutions.</p>
+                        <p class="animate delay-1">Our team of experts combines engineering excellence with creative vision to deliver unparalleled branding experiences for clients worldwide.</p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <h3>2500+</h3>
+                                <p>local Clients</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>12+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>98%</h3>
+                                <p>Client Satisfaction</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Yhecut Media Facility">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section - UPDATED -->
+        <section class="social-section" id="social">
+            <div class="container">
+                <div class="section-header animate">
+                    <h2>Connect With Us</h2>
+                    <p>Follow our journey and stay updated with the latest in branding innovation</p>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" target="_blank" class="social-icon animate">
+                        <i class="fab fa-facebook-f"></i>
+                        <span class="social-tooltip">Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="social-icon animate">
+                        <i class="fab fa-instagram"></i>
+                        <span class="social-tooltip">Instagram</span>
+                    </a>
+                    <a href="https://wa.me/254728250657" target="_blank" class="social-icon animate">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="social-tooltip">WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>Yhecut Media</h3>
+                        <p>Transforming brands through innovative machinery, premium accessories, and expert servicing solutions since 2010.</p>
+                        <p>© 2023 Yhecut Media. All rights reserved.</p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                            <li><a href="#machinery"><i class="fas fa-chevron-right"></i> Machinery</a></li>
+                            <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
+                            <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Shawmut Plaza, Nakuru, Kenya</a></li>
+                            <li><a href="tel:+254728250657"><i class="fas fa-phone"></i> +254728250657</a></li>
+                            <li><a href="mailto:info@yhecutmedia.com"><i class="fas fa-envelope"></i> info@yhecutmedia.com</a></li>
+                            <li><a href="#"><i class="fas fa-clock"></i> Mon-Sat: 8AM - 6PM</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>Designed and Developed by Yhecut Creative Team</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or respect OS preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            body.classList.add('dark-theme');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            // Add rotation effect
+            themeToggle.classList.add('rotate');
+            setTimeout(() => {
+                themeToggle.classList.remove('rotate');
+            }, 600);
+            
+            // Toggle theme
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Initialize all carousels
+        const carousels = {
+            'machinery-carousel': { currentIndex: 0, interval: null }
+        };
+
+        // Carousel Functionality
+        function initCarousel(carouselId) {
+            const carousel = document.querySelector(`#${carouselId}`);
+            const carouselItems = carousel.querySelectorAll('.carousel-item');
+            const dots = document.querySelectorAll(`.carousel-dot[data-carousel="${carouselId}"]`);
+            const prevBtn = document.querySelector(`#${carouselId}`).parentElement.querySelector('.prev');
+            const nextBtn = document.querySelector(`#${carouselId}`).parentElement.querySelector('.next');
+            
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${carousels[carouselId].currentIndex * 100}%)`;
+                
+                // Update active dot
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === carousels[carouselId].currentIndex);
+                });
+            }
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    // Reset interval on interaction
+                    clearInterval(carousels[carouselId].interval);
+                    carousels[carouselId].interval = setInterval(() => {
+                        carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex + 1) % carouselItems.length;
+                        updateCarousel();
+                    }, 5000);
+                    
+                    carousels[carouselId].currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Next button
+            nextBtn.addEventListener('click', () => {
+                // Reset interval on interaction
+                clearInterval(carousels[carouselId].interval);
+                carousels[carouselId].interval = setInterval(() => {
+                    carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex + 1) % carouselItems.length;
+                    updateCarousel();
+                }, 5000);
+                
+                carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex + 1) % carouselItems.length;
+                updateCarousel();
+            });
+            
+            // Previous button
+            prevBtn.addEventListener('click', () => {
+                // Reset interval on interaction
+                clearInterval(carousels[carouselId].interval);
+                carousels[carouselId].interval = setInterval(() => {
+                    carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex + 1) % carouselItems.length;
+                    updateCarousel();
+                }, 5000);
+                
+                carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex - 1 + carouselItems.length) % carouselItems.length;
+                updateCarousel();
+            });
+            
+            // Auto slide - infinite loop
+            clearInterval(carousels[carouselId].interval);
+            carousels[carouselId].interval = setInterval(() => {
+                carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex + 1) % carouselItems.length;
+                updateCarousel();
+            }, 5000);
+            
+            // Swipe functionality
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carousel.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            carousel.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Reset interval on interaction
+                    clearInterval(carousels[carouselId].interval);
+                    carousels[carouselId].interval = setInterval(() => {
+                        carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex + 1) % carouselItems.length;
+                        updateCarousel();
+                    }, 5000);
+                    
+                    // Swipe left
+                    carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex + 1) % carouselItems.length;
+                    updateCarousel();
+                }
+                
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    // Reset interval on interaction
+                    clearInterval(carousels[carouselId].interval);
+                    carousels[carouselId].interval = setInterval(() => {
+                        carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex + 1) % carouselItems.length;
+                        updateCarousel();
+                    }, 5000);
+                    
+                    // Swipe right
+                    carousels[carouselId].currentIndex = (carousels[carouselId].currentIndex - 1 + carouselItems.length) % carouselItems.length;
+                    updateCarousel();
+                }
+            }
+            
+            // Initialize
+            updateCarousel();
+        }
+
+        // Initialize all carousels
+        Object.keys(carousels).forEach(carouselId => {
+            initCarousel(carouselId);
+        });
+
+        // View Details functionality
+        document.querySelectorAll('.view-detail-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const title = button.getAttribute('data-title');
+                const image = button.getAttribute('data-image');
+                
+                // Update detail page content
+                document.getElementById('detail-title').textContent = title;
+                document.getElementById('detail-image').src = image;
+                document.getElementById('detail-subtitle').textContent = title;
+                
+                // Hide main content, show detail page
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('service-detail').style.display = 'block';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Back button functionality
+        document.getElementById('back-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            // Show main content, hide detail page
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('service-detail').style.display = 'none';
+            
+            // Scroll to solutions section
+            document.getElementById('machinery').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Service cards details functionality
+        document.querySelectorAll('.service-detail-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = button.closest('.service-card');
+                const title = card.querySelector('h3').textContent;
+                const image = card.querySelector('img').src;
+                
+                // Update detail page content
+                document.getElementById('detail-title').textContent = title;
+                document.getElementById('detail-image').src = image;
+                document.getElementById('detail-subtitle').textContent = title;
+                document.getElementById('detail-description').textContent = card.querySelector('p').textContent;
+                
+                // Hide main content, show detail page
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('service-detail').style.display = 'block';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
